@@ -1,0 +1,10 @@
+node_modules/
+dist/
+build/
+coverage/
+__pycache__/
+*.pyc
+.venv/
+.env*
+.DS_Store
+.naming.private.json
