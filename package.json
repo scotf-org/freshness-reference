@@ -16,7 +16,7 @@
     "NOTICE"
   ],
   "scripts": {
-    "test": "node --test --experimental-test-coverage --test-coverage-lines=80 --test-coverage-branches=80 --test-coverage-functions=80 \"test/**/*.test.mjs\"",
+    "test": "node --test --experimental-test-coverage --test-coverage-lines=95 --test-coverage-branches=90 --test-coverage-functions=95 \"test/**/*.test.mjs\"",
     "example": "node bin/freshness-run.mjs --in examples/synthetic --role distributor"
   }
 }
