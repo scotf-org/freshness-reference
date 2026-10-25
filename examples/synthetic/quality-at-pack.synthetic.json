@@ -1,0 +1,62 @@
+{
+  "@context": [
+    "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+    { "scotf": "https://ref.scotf.org/epcis-ext/" }
+  ],
+  "type": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate": "2026-09-16T00:00:00.000Z",
+  "epcisBody": {
+    "eventList": [
+      {
+        "type": "ObjectEvent",
+        "eventTime": "2026-09-14T06:30:00.000Z",
+        "eventTimeZoneOffset": "+00:00",
+        "action": "OBSERVE",
+        "bizStep": "inspecting",
+        "disposition": "conformant",
+        "epcList": ["urn:epc:id:sscc:0614141.1000000001"],
+        "readPoint": { "id": "urn:epc:id:sgln:0614141.00001.0" },
+        "scotf:inspection": {
+          "inspectedBy": "supplier",
+          "acceptable": true,
+          "ripenessStage": 2,
+          "temperature": { "value": 1.5, "uom": "CEL" }
+        }
+      },
+      {
+        "type": "ObjectEvent",
+        "eventTime": "2026-09-14T06:40:00.000Z",
+        "eventTimeZoneOffset": "+00:00",
+        "action": "OBSERVE",
+        "bizStep": "inspecting",
+        "disposition": "conformant",
+        "epcList": ["urn:epc:id:sscc:0614141.1000000002"],
+        "readPoint": { "id": "urn:epc:id:sgln:0614141.00001.0" },
+        "scotf:inspection": {
+          "inspectedBy": "supplier",
+          "acceptable": true,
+          "ripenessStage": 3,
+          "temperature": { "value": 1.9, "uom": "CEL" },
+          "defects": [{ "type": "bruising", "unitsAffected": 1 }]
+        }
+      },
+      {
+        "type": "ObjectEvent",
+        "eventTime": "2026-09-15T18:00:00.000Z",
+        "eventTimeZoneOffset": "+00:00",
+        "action": "OBSERVE",
+        "bizStep": "inspecting",
+        "disposition": "conformant",
+        "epcList": ["urn:epc:id:sscc:0614141.1000000001"],
+        "readPoint": { "id": "urn:epc:id:sgln:0629999.00007.0" },
+        "scotf:inspection": {
+          "inspectedBy": "receiver",
+          "acceptable": true,
+          "ripenessStage": 3,
+          "observedShelfLifeDays": 6
+        }
+      }
+    ]
+  }
+}

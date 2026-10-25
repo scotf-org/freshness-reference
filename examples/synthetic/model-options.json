@@ -1,0 +1,6 @@
+{
+  "synthetic": true,
+  "note": "Illustrative model configuration for the worked example. These are not measured values for any commodity. The library ships no default: a shelf-life budget is a domain fact that only the owner of the product can supply, so it is stated here, beside the data it describes.",
+  "baselineDays": 10,
+  "referenceC": 0
+}
