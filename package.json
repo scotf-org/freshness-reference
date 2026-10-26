@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Reference pipeline turning EPCIS 2.0 sensor events and a quality-at-pack record into a remaining shelf-life estimate and a role-filtered signal.",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scotf-org/freshness-reference.git"
+  },
   "type": "module",
   "engines": {
     "node": ">=22"
