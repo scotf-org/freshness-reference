@@ -1,0 +1,81 @@
+{
+  "@context": [
+    "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+    { "scotf": "https://ref.scotf.org/epcis-ext/" }
+  ],
+  "type": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate": "2026-09-16T00:00:00.000Z",
+  "epcisBody": {
+    "eventList": [
+      {
+        "type": "ObjectEvent",
+        "eventTime": "2026-09-14T08:00:00.000Z",
+        "eventTimeZoneOffset": "+00:00",
+        "action": "OBSERVE",
+        "bizStep": "sensor_reporting",
+        "disposition": "in_transit",
+        "epcList": ["urn:epc:id:sscc:0614141.1000000001"],
+        "readPoint": { "id": "urn:epc:id:sgln:0614141.00001.0" },
+        "sensorElementList": [
+          {
+            "sensorMetadata": { "deviceID": "urn:epc:id:giai:0614141.tracker-a1" },
+            "sensorReport": [
+              { "type": "Temperature", "uom": "CEL", "value": 1.8, "time": "2026-09-14T08:00:00.000Z" },
+              { "type": "Temperature", "uom": "CEL", "value": 2.1, "time": "2026-09-14T20:00:00.000Z" },
+              { "type": "Temperature", "uom": "CEL", "value": 2.4, "time": "2026-09-15T08:00:00.000Z" },
+              { "type": "RelativeHumidity", "uom": "P1", "value": 92 }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ObjectEvent",
+        "eventTime": "2026-09-14T08:00:00.000Z",
+        "eventTimeZoneOffset": "+00:00",
+        "action": "OBSERVE",
+        "bizStep": "sensor_reporting",
+        "disposition": "in_transit",
+        "epcList": ["urn:epc:id:sscc:0614141.1000000002"],
+        "readPoint": { "id": "urn:epc:id:sgln:0614141.00001.0" },
+        "sensorElementList": [
+          {
+            "sensorMetadata": { "deviceID": "urn:epc:id:giai:0614141.tracker-a2" },
+            "sensorReport": [
+              { "type": "Temperature", "uom": "CEL", "value": 2.0, "time": "2026-09-14T08:00:00.000Z" },
+              { "type": "Temperature", "uom": "CEL", "value": 11.5, "time": "2026-09-14T18:00:00.000Z" },
+              { "type": "Temperature", "uom": "CEL", "value": 12.2, "time": "2026-09-15T02:00:00.000Z" },
+              { "type": "Temperature", "uom": "CEL", "value": 4.0, "time": "2026-09-15T08:00:00.000Z" },
+              {
+                "type": "https://ref.scotf.org/epcis-ext/Position",
+                "coordinateReferenceSystem": "EPSG:4326",
+                "component": "latitude",
+                "value": 36.6777,
+                "uom": "DD"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ObjectEvent",
+        "eventTime": "2026-09-14T08:00:00.000Z",
+        "eventTimeZoneOffset": "+00:00",
+        "action": "OBSERVE",
+        "bizStep": "sensor_reporting",
+        "disposition": "in_transit",
+        "epcList": ["urn:epc:id:sscc:0614141.1000000003"],
+        "readPoint": { "id": "urn:epc:id:sgln:0614141.00003.0" },
+        "sensorElementList": [
+          {
+            "sensorMetadata": { "deviceID": "urn:epc:id:giai:0614141.tracker-b1" },
+            "sensorReport": [
+              { "type": "Temperature", "uom": "FAH", "value": 36.0, "time": "2026-09-14T08:00:00.000Z" },
+              { "type": "Temperature", "uom": "FAH", "value": 37.4, "time": "2026-09-15T08:00:00.000Z" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

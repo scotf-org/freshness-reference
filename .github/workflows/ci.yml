@@ -1,0 +1,63 @@
+# Tests and the worked example, on every pull request.
+# Part of Freshness Reference, contributed by TOTEM LLC. Licensed under Apache-2.0.
+# Built with TOTEM Agentic OS (TAO) · https://url.totemltd.com/tao
+name: test
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: test-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install
+        run: npm ci
+
+      # Coverage thresholds are part of the command, so the suite fails rather than reports when
+      # coverage drops. An acceptance criterion nobody enforces is a criterion that drifts.
+      - name: Test with coverage thresholds
+        run: npm test
+
+      # The acceptance criterion is that the example runs from a clean clone, so CI runs it the
+      # way a reader would and times it. A reference implementation that no longer runs is worse
+      # than none: it teaches a pipeline nobody can reproduce.
+      - name: Worked example runs end to end
+        run: |
+          start=$(date +%s)
+          # Called directly rather than through npm, because npm prints its banner to stdout
+          # and the output of this step is parsed as JSON by the next one.
+          node bin/freshness-run.mjs --in examples/synthetic --role distributor > /tmp/example-output.json
+          end=$(date +%s)
+          echo "example completed in $((end - start))s"
+          test $((end - start)) -lt 600 || { echo "example took longer than 10 minutes"; exit 1; }
+
+      - name: The example produced a signal for every joined pallet
+        run: |
+          node -e "
+            const out = JSON.parse(require('fs').readFileSync('/tmp/example-output.json','utf8'));
+            if (!Array.isArray(out.signals) || out.signals.length === 0) {
+              throw new Error('the example produced no signals');
+            }
+            for (const s of out.signals) {
+              if (typeof s.band !== 'string') throw new Error('a signal has no band');
+              if ('qualityAtPack' in s) throw new Error('the distributor view leaked the grower record');
+            }
+            console.log(out.signals.length + ' signal(s), none carrying the grower record');
+          "

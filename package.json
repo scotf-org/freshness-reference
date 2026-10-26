@@ -1,0 +1,26 @@
+{
+  "name": "freshness-reference",
+  "version": "0.1.0",
+  "description": "Reference pipeline turning EPCIS 2.0 sensor events and a quality-at-pack record into a remaining shelf-life estimate and a role-filtered signal.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scotf-org/freshness-reference.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "freshness-run": "bin/freshness-run.mjs"
+  },
+  "files": [
+    "src/",
+    "bin/",
+    "NOTICE"
+  ],
+  "scripts": {
+    "test": "node --test --experimental-test-coverage --test-coverage-lines=95 --test-coverage-branches=90 --test-coverage-functions=95 \"test/**/*.test.mjs\"",
+    "example": "node bin/freshness-run.mjs --in examples/synthetic --role distributor"
+  }
+}
